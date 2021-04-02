@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,52 +17,118 @@
 	<link rel="stylesheet" href="resources/css/font-icons.css" type="text/css" />
 	<link rel="stylesheet" href="resources/css/animate.css" type="text/css" />
 	<link rel="stylesheet" href="resources/css/magnific-popup.css" type="text/css" />
+	<link rel="stylesheet" href="resources/css/comment.css" type="text/css" />
 
 	<link rel="stylesheet" href="resources/css/custom.css" type="text/css" />
+	
+	<style>
+	.widget_links li{
+		font-size: 13px;
+	}
+	.widget_links ul li a:hover{
+	color: #007bff;
+	}
+	.setting{
+    color: #444;
+    padding-left: 20px;
+    font-size: 20px;
+	}
+	.setting:hover{
+
+	}
+	</style>
 </head>
 <body>
 <div id="wrapper" class="clearfix">
 
 		<!-- Header
 		============================================= -->
-		<header id="header" class="full-header">
-			<div id="header-wrap" class="">
+		<header id="header" class="header-size-sm">
+			<div class="container">
+				<div class="header-row">
+
+					<!-- Logo
+					============================================= -->
+					<div id="logo" class="mx-auto">
+						<a href="home.do" class="standard-logo" data-dark-logo="resources/images/test.jpg"><img src="resources/images/test.jpg" alt="Canvas Logo"></a>
+						<a href="home.do" class="retina-logo" data-dark-logo="resources/images/test.jpg"><img src="resources/images/test.jpg	" alt="Canvas Logo"></a>
+					</div><!-- #logo end -->
+
+
+				</div>
+			</div>
+			
+		
+		<div id="header-wrap" class="border-top border-f5">
 				<div class="container">
-					<div class="header-row top-search-parent">
-
-						<!-- Logo
-						============================================= -->
-						<div id="logo">
-							<a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="Canvas Logo" style="height: 100px;"></a>
-							<a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo" style="height: 100px;"></a>
-						</div><!-- #logo end -->
-
-						<div class="header-misc">
-
-							<!-- Top Search
+					<div class="header-row justify-content-between top-search-parent">
+									<!-- login -->
+				<div class="header-misc">
+					<c:if test="${ empty sessionScope.loginUser }">
+						<div  class="inline-block ui-tabs-tab ui-corner-top ui-state-default ui-tab ui-tabs-active ui-state-active">
+							<button class="button button-border button-rounded button-leaf" id="login-form-submit" name="login-form-submit"	data-toggle="modal" data-target="#myModal" value="login">Login</button>
+						</div><!-- #top-search end -->
+					</c:if>
+					
+					<c:if test="${ !empty sessionScope.loginUser }">
+					
+					<div class="header-misc">
+						<c:url var="myInfo" value="myInfo.do"/>
+			            <c:url var="logout" value="logout.do"/>
+							<!-- info
 							============================================= -->
-							<div id="top-search" class="header-misc-icon">
-								<a href="#" id="top-search-trigger"><i class="icon-line-search"></i><i class="icon-line-cross"></i></a>
-							</div><!-- #top-search end -->
+						<div id="top-cart" class="header-misc-icon d-none d-sm-block">
+							<a href="#" id="top-cart-trigger"><i class="icon-line-bag"></i></a>
+							<div class="top-cart-content">
+								<div class="top-cart-title">
+									<h4>안녕하세요 ${ loginUser.name }님</h4>
+								</div>
+								<div class="top-cart-items">
+									<div class="top-cart-item">
+										<div class="top-cart-item-image">
+											<a href="#"><img src="resources/images/test.jpg" alt="Customer Testimonails"></a>
+										</div>
+										<div class="top-cart-item-desc">
+											<div class="top-cart-item-desc-title">
+												<h5>${ loginUser.email }</h5>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+								<div class="top-cart-action">
+									<a href="myInfo" class="social-icon si-rounded si-cloudapp" title="Cloudapp">
+																<i class="icon-line2-settings"></i>
+																<i class="icon-line2-settings"></i>
+									</a>
+									<a href="logout" class="button button-mini button-circle button-red"><i class="icon-off"></i>log out</a>
+								</div>
+							</div>
+						</div><!-- #top-cart end -->
 
-							
+					</div>
+					
+					
+   						
+					</c:if>
 
-						</div>
+				</div>
+					
+		
 
-						<div id="primary-menu-trigger">
-							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
-						</div>
+						
 
 						<!-- Primary Navigation
 						============================================= -->
 						<nav class="primary-menu">
 
 							<ul class="menu-container">
+								<li class="menu-item"><a class="menu-link" href="home.do"><div>Home</div></a></li>
 								<li class="menu-item sub-menu">
-									<a class="menu-link" href="index.html" style="padding-top: 39px; padding-bottom: 39px;"><div>Home<i class="icon-angle-down"></i></div></a>
+									<a class="menu-link" href="bList.do"><div>Board<i class="icon-angle-down"></i></div></a>
 									<ul class="sub-menu-container" style="">
 										<li class="menu-item sub-menu" style="">
-											<a class="menu-link" href="index-corporate.html"><div>Home - Corporate<i class="icon-angle-down"></i></div></a>
+											<a class="menu-link" href=><div>Home - Corporate<i class="icon-angle-down"></i></div></a>
 											<ul class="sub-menu-container" style="">
 												<li class="menu-item" style="">
 													<a class="menu-link" href="index-corporate.html"><div>Corporate - Layout 1</div></a>
@@ -76,25 +144,68 @@
 												</li>
 											</ul>
 										<button class="sub-menu-trigger icon-chevron-right"></button></li>
+										
 									</ul>
 								<button class="sub-menu-trigger icon-chevron-right"></button>
 								</li>
+							
 							</ul>
+
 						</nav><!-- #primary-menu end -->
-
-						<form class="top-search-form" action="search.html" method="get" style="width: 1843px;">
-							<input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter.." autocomplete="off">
-						</form>
-
 					</div>
 				</div>
 			</div>
-			<div class="header-wrap-clone" style="height: 100px;"></div>
-		</header><!-- #header end -->
+			<!-- head warp end -->
+		</header>
+		<!-- #header end -->
 
 		<!-- Page Title
 		============================================= -->
 
+		<div class="modal fade show" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" style="display: none; padding-right: 17px;" aria-modal="true" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-body">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel">Login</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						</div>
+						<div class="modal-body">
+
+								<div class="well well-lg mb-0">
+									<form  class="row"  action="login.do" method="post">
+	
+										<div class="col-12">
+											<h3>Login to your Account</h3>
+										</div>
+	
+										<div class="col-12 form-group">
+											<label for="login-form-username">ID:</label>
+											<input type="text" id="login-form-username" name="id" value="" class="form-control">
+										</div>
+	
+										<div class="col-12 form-group">
+											<label for="login-form-password">Password:</label>
+											<input type="password" id="login-form-password" name="pwd" value="" class="form-control">
+										</div>
+	
+										<div class="col-12 form-group">
+											<button href="login.do"class="btn btn-secondary m-0" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+											<a href="#" class="float-right">Forgot Password?</a>
+										</div>
+	
+									</form>
+								</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<a href="uInsertView.do" type="button" class="btn btn-primary">Sign In</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	
 

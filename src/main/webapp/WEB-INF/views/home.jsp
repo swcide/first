@@ -7,7 +7,7 @@
 
 	<title>Home</title>
 </head>
-<body class="stretched device-xl has-plugin-easing has-plugin-bootstrap has-plugin-counter has-plugin-twitter has-plugin-instagram has-plugin-linkscroll has-plugin-form has-plugin-subscribeform has-plugin-isotope has-plugin-masonrythumbs">
+<body >
 	<c:import url="common/header.jsp"/>
 		<section id="page-title">
 

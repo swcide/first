@@ -10,6 +10,7 @@
 		<!-- root-context.xml을 소스폴더 최상위 패스 ("src/main/resources ==> classpath)  -->
 		<param-value>
 			classpath:root-context.xml
+			/WEB-INF/spring/spring-security.xml
 		</param-value>
 	</context-param>
 	
@@ -31,7 +32,23 @@
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.do</url-pattern>
+		<!-- *.do 인요청들을 DispatcherServlet에서 HandleMapping을 통해 해당 Controller 요청하도록 -->
 	</servlet-mapping>
+	
+	<!-- 한글 깨짐 방지 인코딩 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<!-- encoding 값을 UTF-8로 지정해준다 -->
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 </web-app>

@@ -8,5 +8,13 @@
 </head>
 <body>
 
+	<section id="page-title">
+
+			<div class="container clearfix">
+				<h1>Board</h1>
+			</div>
+
+	</section>
+
 </body>
 </html>
