@@ -28,13 +28,11 @@
 	.widget_links ul li a:hover{
 	color: #007bff;
 	}
-	.setting{
-    color: #444;
-    padding-left: 20px;
-    font-size: 20px;
-	}
-	.setting:hover{
 
+	.entry-meta{
+	margin:0px;
+	color:#444;
+	
 	}
 	</style>
 </head>
@@ -78,14 +76,31 @@
 							<!-- info
 							============================================= -->
 						<div id="top-cart" class="header-misc-icon d-none d-sm-block">
-							<a href="#" id="top-cart-trigger"><i class="icon-line-bag"></i></a>
+							<div class="entry-meta">
+								<ul>
+								<li><a href="#" id="top-cart-trigger"><i class="icon-user"></i> ${ loginUser.name }</a></li>
+								</ul>
+							</div>
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							<div class="top-cart-content">
 								<div class="top-cart-title">
 									<h4>안녕하세요 ${ loginUser.name }님</h4>
 								</div>
 								<div class="top-cart-items">
 									<div class="top-cart-item">
-										<div class="top-cart-item-image">
+										<div class="testi-image">
 											<a href="#"><img src="resources/images/test.jpg" alt="Customer Testimonails"></a>
 										</div>
 										<div class="top-cart-item-desc">
