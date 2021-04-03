@@ -13,16 +13,54 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDao mDao;
 	
 	
+	/**
+	 *1. 회원가입
+	 *
+	 */
 	@Override
 	public int insertMember(Member m) {
 		return mDao.insertMember(m);
 	}
 
 
+	/**
+	 *
+	 *2. 로그인
+	 */
 	@Override
 	public Member loginMember(Member m) {
 		Member loginUser = mDao.loginMember(m) ;
 		return loginUser;
+	}
+
+
+	/**
+	 *3.업데이트
+	 */
+	@Override
+	public int updateMember(Member m) {
+		
+		return mDao.updateMember(m);
+		
+	}
+
+
+	/**
+	 *
+	 *4. 회원탈퇴
+	 */
+	@Override
+	public int deleteMember(String id) {
+		return mDao.deleteMember(id);
+	}
+
+
+	/**
+	 *4-1 암호체크
+	 */
+	@Override
+	public int pwdCheck(String id) {
+		return mDao.pwdCheck(id);
 	}
 
 }

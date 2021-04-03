@@ -18,5 +18,28 @@ public interface MemberService {
 	 */
 	Member loginMember(Member m);
 
+	/**
+	 * 3. 업데이트
+	 * @param m
+	 * @return
+	 */
+	int updateMember(Member m);
+
+	/**
+	 * 4.회원탈퇴
+	 * @param id
+	 * @return
+	 */
+	int deleteMember(String id);
+
+	/**
+	 * 5.암호체크
+	 * @param id
+	 * @return
+	 */
+	int pwdCheck(String id);
+
+
+
 
 }

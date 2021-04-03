@@ -17,9 +17,9 @@
 	<link rel="stylesheet" href="resources/css/font-icons.css" type="text/css" />
 	<link rel="stylesheet" href="resources/css/animate.css" type="text/css" />
 	<link rel="stylesheet" href="resources/css/magnific-popup.css" type="text/css" />
-	<link rel="stylesheet" href="resources/css/comment.css" type="text/css" />
 
 	<link rel="stylesheet" href="resources/css/custom.css" type="text/css" />
+	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script> 
 	
 	<style>
 	.widget_links li{
@@ -82,18 +82,6 @@
 								</ul>
 							</div>
 							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
 							<div class="top-cart-content">
 								<div class="top-cart-title">
 									<h4>안녕하세요 ${ loginUser.name }님</h4>
@@ -112,11 +100,11 @@
 									
 								</div>
 								<div class="top-cart-action">
-									<a href="myInfo" class="social-icon si-rounded si-cloudapp" title="Cloudapp">
+									<a href="${myInfo}" class="social-icon si-rounded si-cloudapp" title="Cloudapp">
 																<i class="icon-line2-settings"></i>
 																<i class="icon-line2-settings"></i>
 									</a>
-									<a href="logout" class="button button-mini button-circle button-red"><i class="icon-off"></i>log out</a>
+									<a href="${logout}" class="button button-mini button-circle button-red"><i class="icon-off"></i>log out</a>
 								</div>
 							</div>
 						</div><!-- #top-cart end -->
@@ -205,8 +193,8 @@
 										</div>
 	
 										<div class="col-12 form-group">
-											<button href="login.do"class="btn btn-secondary m-0" id="login-form-submit" name="login-form-submit" value="login">Login</button>
-											<a href="#" class="float-right">Forgot Password?</a>
+											<button href="login.do"class="btn btn-secondary m-0 float-right" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+											<a href="#" class="">Forgot Password?</a>
 										</div>
 	
 									</form>

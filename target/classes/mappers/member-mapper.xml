@@ -26,4 +26,23 @@
 		WHERE ID =#{id}
 		AND M_STATUS='Y'
 	</select>
+	
+	<update id="updateMember" parameterType="Member">
+		UPDATE MEMBER
+		SET NAME=#{name},EMAIL=#{email},GENDER=#{gender},AGE=#{age},PHONE=#{phone},UPDATE_DATE=SYSDATE
+		WHERE ID=#{id}
+	</update>
+	
+	<select id="pwdCheck" parameterType="String" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE ID =#{id}
+	</select>
+
+	<update id="deleteMember" parameterType="Member">
+		UPDATE MEMBER
+		SET M_STATUS='N'
+		WHERE ID=#{id}
+	</update>
+	
 </mapper>
