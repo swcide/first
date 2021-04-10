@@ -15,15 +15,21 @@
 				<div class="container clearfix">
 
 					<div class="row clearfix">
-
+						<form action="myImgUpload.do" id="imgfm" name="imgfm" method="POST" enctype="multipart/form-data">
+							<input type="hidden" name="id" value="${loginUser.id }">
+							<input style="display:none;"   type="file" id="file" name="file" class="profile-image-input" accept="image/*">
+							<input type="hidden" value="${loginUser.photo }" name="photo" id="photo">
+						</form>
+				
 						<div class="col-md-9">
-
-							<img src="resources/userUpload/DEFAULT.png" class="alignleft img-circle img-thumbnail my-0" alt="Avatar" style="max-width: 84px;">
+							<a href="javascript:void(0);" onclick="imgChange()" id="profile"><img id="phot" src="resources/userUpload/DEFAULT.png" class="alignleft img-circle img-thumbnail my-0" alt="Avatar" style="width: 84px; height: 84px"></a>
 							
 							<div class="heading-block border-0">
-								<h3>${username }</h3>
+								<h3>${loginUser.name }</h3>
 								<span>Your Profile Bio</span>
 							</div>
+							
+							
 
 							<div class="clear"></div>
 
@@ -67,27 +73,59 @@
 														<div class="form-group col-md-3">
 															<label for="inputCity">gender</label>
 															<div class="form-row">
-																<div class="form-group col-md-3">
-																	<div>
-																		<input id="radio-8" class="radio-style" name="gender" type="radio" value="M">
-																		<label for="radio-8" class="radio-style-2-label" >M</label>
-																	</div>
-																</div>
-															
-																<div class="form-group col-md-3">
-																	<div>
-																		<input id="radio-7" class="radio-style" name="gender" type="radio" value="F">
-																		<label for="radio-7" class="radio-style-2-label ">F</label>
-																	</div>
-																</div>
-															
+																
+																<c:choose>
+																	<c:when test="${ loginUser.gender eq 'M' }">
+																		<div class="form-group col-md-3">
+																			<div>
+																				<input id="radio-8" class="radio-style" name="gender" type="radio" value="M" checked>
+																				<label for="radio-8" class="radio-style-2-label" >M</label>
+																			</div>
+																		</div>
+																		<div class="form-group col-md-3">
+																			<div>
+																				<input id="radio-7" class="radio-style" name="gender" type="radio" value="F" >
+																				<label for="radio-7" class="radio-style-2-label ">F</label>
+																			</div>
+																		</div>
+																	</c:when>
+																	<c:when test="${ loginUser.gender eq 'F' }">
+																		<div class="form-group col-md-3">
+																			<div>
+																				<input id="radio-8" class="radio-style" name="gender" type="radio" value="M">
+																				<label for="radio-8" class="radio-style-2-label" >M</label>
+																			</div>
+																		</div>
+																	
+																		<div class="form-group col-md-3">
+																			<div>
+																				<input id="radio-7" class="radio-style" name="gender" type="radio" value="F" checked>
+																				<label for="radio-7" class="radio-style-2-label ">F</label>
+																			</div>
+																		</div>
+																	</c:when>
+																	<c:otherwise>
+																		<div class="form-group col-md-3">
+																			<div>
+																				<input id="radio-8" class="radio-style" name="gender" type="radio" value="M">
+																				<label for="radio-8" class="radio-style-2-label" >M</label>
+																			</div>
+																		</div>
+																		<div class="form-group col-md-3">
+																			<div>
+																				<input id="radio-7" class="radio-style" name="gender" type="radio" value="F">
+																				<label for="radio-7" class="radio-style-2-label ">F</label>
+																			</div>
+																		</div>
+																</c:otherwise>
+															</c:choose>
 															</div>
 														</div>
 														<div class="form-group col-md-3">
 															<label for="birth">birth</label>
+															
 															<select id="birth" name="birth" class="form-control">
 																
-																<option selected=""></option>
 																<%for(int i = 1920; i<=2021;i++){ %>
 																<option value="<%= i %>"><%= i %></option>
 																<%} %>
@@ -95,7 +133,7 @@
 														</div>
 														<div class="form-group col-md-6">
 															<label for="inputZip">phone</label>
-															<input type="text" name="phone" class="form-control" id="phone">
+															<input type="text" name="phone" class="form-control" id="phone" value="${loginUser.phone }">
 														</div>
 													</div>
 												
@@ -187,6 +225,8 @@
 			
 		
 	}
+	
+
 	
 </script>
 

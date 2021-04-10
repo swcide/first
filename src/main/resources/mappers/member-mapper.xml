@@ -12,13 +12,16 @@
 		<result property="enrollDate" column="ENROLL_DATE"/>
 		<result property="updateDate" column="UPDATE_DATE"/>
 		<result property="mStatus" column="M_STATUS"/>
+		<result property="photo" column="PHOTO"/>
 	</resultMap>
 	
+<!-- 	회원가입 -->
 	<insert id="insertMember" parameterType="Member" >
 		INSERT INTO MEMBER
 		VALUES(#{id},#{pwd},#{name},#{email},null,null,#{phone},SYSDATE,SYSDATE,DEFAULT,DEFAULT)
 	</insert>
 	
+<!-- 	로그인 -->
 	<select id="loginMember" parameterType="Member" resultMap="memberResultSet">
 	
 		SELECT *
@@ -27,22 +30,35 @@
 		AND M_STATUS='Y'
 	</select>
 	
+<!-- 	인포수정 -->
 	<update id="updateMember" parameterType="Member">
 		UPDATE MEMBER
 		SET NAME=#{name},EMAIL=#{email},GENDER=#{gender},AGE=#{age},PHONE=#{phone},UPDATE_DATE=SYSDATE
 		WHERE ID=#{id}
 	</update>
 	
+<!-- 	이미지업데이트 -->
+	<update id="myImgUpload" parameterType="Member">
+		UPDATE MEMBER
+		SET PHOTO = #{photo}
+		WHERE ID = #{id}
+		</update>
+	
+	
+	
+<!-- 	비밀번호체크 -->
 	<select id="pwdCheck" parameterType="String" resultType="_int">
 		SELECT COUNT(*)
 		FROM MEMBER
 		WHERE ID =#{id}
 	</select>
 
+<!-- 	회원탈퇴 -->
 	<update id="deleteMember" parameterType="Member">
 		UPDATE MEMBER
 		SET M_STATUS='N'
 		WHERE ID=#{id}
 	</update>
 	
+
 </mapper>

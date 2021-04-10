@@ -52,6 +52,8 @@
 	<script type="text/javascript" async="" src="http://www.google.com/cse/cse.js?cx=006140480002229796823:3f-_bji0d1w"></script>
 	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/plugins.min.js"></script>
+	<script src="resources/js/summernote-lite.js"></script>
+	<script src="resources/js/summernote-ko-KR.js"></script>
 
 	<!-- Footer Scripts
 	============================================= -->

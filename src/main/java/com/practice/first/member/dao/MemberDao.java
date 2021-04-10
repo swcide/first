@@ -41,13 +41,34 @@ public class MemberDao {
 		System.out.println("에이오");
 		return sqlSession.update("memberMapper.updateMember",m);
 	}
+	
+	/**
+	 * 3-1. 이미지 업데이트
+	 * @param m
+	 * @return
+	 */
+	public int myImgUpload(Member m) {
+		return sqlSession.update("memberMapper.myImgUpload",m);
+	}
 
+	/**
+	 * 4. 회원삭제
+	 * @param id
+	 * @return
+	 */
 	public int deleteMember(String id) {
 		return sqlSession.update("memberMapper.deleteMember",id);
 	}
 
+	/**
+	 * 4-1 비밀번호 체크
+	 * @param id
+	 * @return
+	 */
 	public int pwdCheck(String id) {
 		return sqlSession.selectOne("memberMapper.pwdCheck",id);
 	}
+
+	
 
 }

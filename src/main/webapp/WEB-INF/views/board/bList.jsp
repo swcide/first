@@ -16,7 +16,7 @@ font-size: 15px
 font-size:14px;
 }
 .board .title{
-	 width: 100%; 	
+	 width: 73%; 	
      white-space: nowrap;
 }
 .sidebar{
@@ -77,83 +77,75 @@ color: #007bff;;
 							  </thead>
 							
 							  <tbody>
+							  <c:forEach var="b" items="${ list }">
 								<tr>
-								  <td>1</td>
+								  <td>${b.bId}</td>
 								  <td>
-									  <span class="title">
-									  	<a href="bDeteil.do">Mark</a>
-									  </span>
+								  	<span class="title">
+									  <c:url var="bdetail" value="bDeteil.do">
+										<c:param name="bId" value="${ b.bId }"/>
+										<c:param name="currentPage" value="${ pi.currentPage }"/>
+									  </c:url>
+										<a href="${ bdetail }">${b.bTitle }</a>
+									 </span>
 								  </td>
 								  <td>
  									<span class="uName">
-								  		<a href="">Mark</a>
+								  		<a href="">${b.bWriter}</a>
 								 	 </span></td>
-								  <td>@mdo</td>
-								  <td>@mdo</td>
+								  <td>${b.bCreateDate}</td>
+								  <td>${b.bCount}</td>
 								</tr>
-								<tr>
-								  <td>2</td>
-								  <td>Jacob</td>
-								  <td>Thorddddddnton</td>
-								  <td>@fat</td>
-								  <td>@fat</td>
-								</tr>
-								<tr>
-								  <td>3</td>
-								  <td>Larry</td>
-								  <td>the Bird</td>
-								  <td>@twitter</td>
-								  <td>@twitter</td>
-								</tr>
+								</c:forEach>
 							  </tbody>
 							</table>
-							
-							<a href="bWrite.do" class="button button-3d button-mini button-rounded button-white button-light" style="float: right; margin-bottom: 25px">글쓰기</a>
-
+						
+							<c:if test="${!empty sessionScope.loginUser }">	
+								<a href="bWriteView.do" class="button button-3d button-mini button-rounded button-white button-light" style="float: right; margin-bottom: 25px">글쓰기</a>
+							</c:if>
+						
 							<div class="line"></div>
 							<ul class="pagination pagination-rounded pagination-secondary justify-content-center">
+							
+							
+							 <c:if test="${ pi.currentPage eq 1 }">
 							  <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">«</span></a></li>
-							  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-							  <li class="page-item"><a class="page-link" href="#">2</a></li>
-							  <li class="page-item"><a class="page-link" href="#">3</a></li>
-							  <li class="page-item"><a class="page-link" href="#">4</a></li>
-							  <li class="page-item"><a class="page-link" href="#">5</a></li>
-							  <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+							 </c:if>
+							 <c:if test="${ pi.currentPage ne 1 }">
+								 <c:url var="before" value="bList.do">
+					                  <c:param name="currentPage" value="${ pi.currentPage - 1 }"/>
+				       		     </c:url>
+							  	 <li class="page-item"><a class="page-link" href="${ before }" aria-label="Previous"> <span aria-hidden="true">«</span></a></li>
+							  </c:if>
+							  <c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+									
+									
+									<c:if test="${ p eq pi.currentPage }">
+										<li class="page-item active"><a class="page-link" href="${ pagination }">${p}</a></li>
+									</c:if>
+									
+									<c:if test="${ p ne pi.currentPage }">
+										<c:url var="pagination" value="bList.do">
+						                    <c:param name="currentPage" value="${ p }"/>
+						                </c:url>
+										<li class="page-item"><a class="page-link" href="${ pagination }">${p}</a></li>
+									</c:if>
+								</c:forEach>
+								<c:if test="${ pi.currentPage eq pi.maxPage }">
+									<li class="page-item disabled"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+								</c:if>	
+								
+								<c:if test="${pi.currentPage ne pi.maxPage }">
+									<c:url var="after" value="bList.do">
+						             	<c:param name="currentPage" value="${ pi.currentPage + 1 }"/>
+						            </c:url> 
+							  		<li class="page-item"><a class="page-link" href="${after }" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+								</c:if>
 							</ul>
 						</div><!-- .postcontent end -->
 						
 						<!-- sidebar -->
-						<div class="sidebar col-lg-2">
-							<div class="sidebar-widgets-wrap">
-								<div class="widget widget_links clearfix">
-									<h4 style="margin-bottom: 7px; padding: 2px; background-color:#F5F5F5; text-align: center; ">최신글</h4>
-									<ul>
-										<li>
-											<a href="animations.html">
-												이거글자몇글자까지 될예정?
-											</a>
-										</li>
-										<li>
-											<a href="animations.html">
-												Animations
-											</a>
-										</li>
-										<li>
-											<a href="animations.html">
-												Animations
-											</a>
-										</li>
-										<li>
-											<a href="animations.html">
-												Animations
-											</a>
-										</li>
-									</ul>
-
-								</div>
-
-							</div>
-						</div>
+						<c:import url="../common/sidebar.jsp"/>
 						<!-- sidebar end -->
 					</div>
 

@@ -9,8 +9,8 @@
 	
 	<typeAliases>
 		<typeAlias type="com.practice.first.member.model.vo.Member" alias="Member"/>
-<!-- 		<typeAlias type="com.practice.first.board.model.vo.Board" alias="Board"/> -->
-<!-- 		<typeAlias type="com.practice.first.board.model.vo.Reply" alias="Reply"/> -->
+		<typeAlias type="com.practice.first.board.model.vo.Board" alias="Board"/>
+		<typeAlias type="com.practice.first.board.model.vo.Reply" alias="Reply"/>
 	</typeAliases>
 	
 	
@@ -20,7 +20,7 @@
 	 -->
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
-<!-- 		<mapper resource="mappers/board-mapper.xml"/> -->
+		<mapper resource="mappers/board-mapper.xml"/>
 	</mappers>
 	
 </configuration>

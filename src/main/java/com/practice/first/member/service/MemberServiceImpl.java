@@ -43,6 +43,14 @@ public class MemberServiceImpl implements MemberService{
 		return mDao.updateMember(m);
 		
 	}
+	
+	/**
+	 *3-1 이미지 업데이트
+	 */
+	@Override
+	public int myImgUpload(Member m) {
+		return mDao.myImgUpload(m);
+	}
 
 
 	/**
@@ -62,5 +70,8 @@ public class MemberServiceImpl implements MemberService{
 	public int pwdCheck(String id) {
 		return mDao.pwdCheck(id);
 	}
+
+
+	
 
 }

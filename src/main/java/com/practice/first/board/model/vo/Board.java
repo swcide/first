@@ -14,7 +14,6 @@ public class Board {
 	private Date bCreateDate;
 	private Date bModifyDate;
 	private String bStatus;
-	private String nSecret;
 	
 	public Board() {
 		super();
@@ -22,7 +21,7 @@ public class Board {
 	}
 
 	public Board(int bId, String bTitle, String bWriter, String bContent, String originalFileName,
-			String renameFileName, int bCount, Date bCreateDate, Date bModifyDate, String bStatus, String nSecret) {
+			String renameFileName, int bCount, Date bCreateDate, Date bModifyDate, String bStatus) {
 		super();
 		this.bId = bId;
 		this.bTitle = bTitle;
@@ -34,7 +33,6 @@ public class Board {
 		this.bCreateDate = bCreateDate;
 		this.bModifyDate = bModifyDate;
 		this.bStatus = bStatus;
-		this.nSecret = nSecret;
 	}
 
 	public int getbId() {
@@ -117,20 +115,13 @@ public class Board {
 		this.bStatus = bStatus;
 	}
 
-	public String getnSecret() {
-		return nSecret;
-	}
-
-	public void setnSecret(String nSecret) {
-		this.nSecret = nSecret;
-	}
 
 	@Override
 	public String toString() {
 		return "Board [bId=" + bId + ", bTitle=" + bTitle + ", bWriter=" + bWriter + ", bContent=" + bContent
 				+ ", originalFileName=" + originalFileName + ", renameFileName=" + renameFileName + ", bCount=" + bCount
 				+ ", bCreateDate=" + bCreateDate + ", bModifyDate=" + bModifyDate + ", bStatus=" + bStatus
-				+ ", nSecret=" + nSecret + "]";
+				+ ", nSecret=" + "]";
 	}
 
 	

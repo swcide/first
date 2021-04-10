@@ -24,6 +24,13 @@ public interface MemberService {
 	 * @return
 	 */
 	int updateMember(Member m);
+	
+	/**
+	 * 4. 이미지 업데이트
+	 * @param m
+	 * @return
+	 */
+	int myImgUpload(Member m);
 
 	/**
 	 * 4.회원탈퇴
@@ -38,6 +45,8 @@ public interface MemberService {
 	 * @return
 	 */
 	int pwdCheck(String id);
+
+	
 
 
 

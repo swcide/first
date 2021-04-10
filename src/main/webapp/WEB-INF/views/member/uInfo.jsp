@@ -27,7 +27,7 @@
 							<img src="resources/userUpload/DEFAULT.png" class="alignleft img-circle img-thumbnail my-0" alt="Avatar" style="max-width: 84px;">
 							
 							<div class="heading-block border-0">
-								<h3>${username }</h3>
+								<h3>${loginUser.name }</h3>
 								<span>Your Profile Bio</span>
 							</div>
 
