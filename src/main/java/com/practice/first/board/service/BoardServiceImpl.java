@@ -129,7 +129,24 @@ public class BoardServiceImpl implements BoardService {
 		return bDao.insertReply(r);
 	}
 
+	@Override
+	public int deleteReply(Reply r) {
+		return bDao.deleteReply(r);
+	}
+
+	@Override
+	public int updateReply(Reply r) {
+		return bDao.updateReply(r);
+	}
+
+	@Override
+	public ArrayList<Reply> moreReplyList(int bId) {
+		return bDao.moreReplyList(bId);
+	}
+
 	
+	
+		
 
 
 	

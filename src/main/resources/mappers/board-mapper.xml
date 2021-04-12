@@ -118,9 +118,35 @@
  	 	AND R_STATUS='Y'
  	 	ORDER BY RID DESC
  	 </select>
- 	 
- 	  	 <insert id="insertReply" parameterType="Reply">
+ 	 <select id="moreReplyList" parameterType="_int" resultMap="replyResultSet">
+ 	 	SELECT *
+ 	 	FROM REPLY
+ 	 	WHERE REF_BID=#{bId}
+ 	 	AND R_STATUS='Y'
+ 	 	AND REF_RID!=0
+ 	 	ORDER BY RID DESC
+ 	 </select>
+	<!--  	 댓글 등록 -->
+  	 <insert id="insertReply" parameterType="Reply">
  	 	INSERT INTO REPLY
  	 	VALUES(SEQ_RID.NEXTVAL,#{rContent},#{refBid},#{rWriter},SYSDATE,SYSDATE,DEFAULT,${refRid})
  	 </insert>
+ 	 
+ 	 <!--  댓글 삭제 -->
+ 	 <update id="deleteReply" parameterType="Reply">
+		UPDATE REPLY
+		SET R_STATUS='N'
+		WHERE RID= #{rId}
+		OR REF_RID =#{rId}
+	</update>
+	
+	<!--  댓글 업데이트 -->
+	<update id="updateReply" parameterType="Reply">
+		UPDATE REPLY
+		SET RCONTENT=#{rContent}
+		WHERE RID= #{rId}
+	</update>
+ 	 
+ 	 
+ 	 
 </mapper>

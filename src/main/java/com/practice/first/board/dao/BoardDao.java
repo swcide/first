@@ -108,17 +108,55 @@ public class BoardDao {
 
 	}
 
+	/**
+	 * 6.최신글 리스트
+	 * @return
+	 */
 	public ArrayList<Board> selectTopList() {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectTopList");
 	}
 
+	/**
+	 * 7 댓글 리스트
+	 * @param bId
+	 * @return
+	 */
 	public ArrayList<Reply> selectReplyList(int bId) {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectReplyList",bId);
 	}
+	public ArrayList<Reply> moreReplyList(int bId) {
+		return (ArrayList)sqlSession.selectList("boardMapper.moreReplyList",bId);
+	}
+	
 
+	/**
+	 * 8. 댓글등록
+	 * @param r
+	 * @return
+	 */
 	public int insertReply(Reply r) {
 		return sqlSession.insert("boardMapper.insertReply",r);
 	}
+	
+	/**
+	 * 9. 댓글 삭제
+	 * @param r
+	 * @return
+	 */
+	public int deleteReply(Reply r) {
+		return sqlSession.update("boardMapper.deleteReply",r);
+	}
+
+	/**
+	 * 10. 댓글 업데이트
+	 * @param r
+	 * @return
+	 */
+	public int updateReply(Reply r) {
+		return sqlSession.update("boardMapper.updateReply",r);
+
+	}
+
 
 	
 

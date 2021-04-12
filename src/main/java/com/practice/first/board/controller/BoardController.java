@@ -432,4 +432,54 @@ public class BoardController {
 		}
 	}
 	
+	/**
+	 * 9. 댓글 삭제
+	 * 
+	 * @param r
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("delteReply.do")
+	public String deleteReply(Reply r) {
+
+		int result = bService.deleteReply(r);
+
+		if (result > 0) {
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
+
+	/**
+	 * 10. 댓글 업데이트
+	 * 
+	 * @param r
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("updateReply.do")
+	public String updateReply(Reply r) {
+		
+		int result = bService.updateReply(r);
+		
+
+		if (result > 0) {
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
+	
+	@RequestMapping(value = "moreList.do")
+	public void moreReplyList(HttpServletResponse response, int bId) throws JsonIOException, IOException {
+
+		response.setContentType("application/json; charset=UTF-8");
+
+		ArrayList<Reply> rList = bService.moreReplyList(bId);
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		gson.toJson(rList, response.getWriter());
+
+	}
+	
 }

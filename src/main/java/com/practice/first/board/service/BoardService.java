@@ -88,6 +88,22 @@ public interface BoardService {
 	 */
 	int insertReply(Reply r);
 
+	/**
+	 * 9. 댓글 삭제
+	 * @param r
+	 * @return
+	 */
+	int deleteReply(Reply r);
+
+	/**
+	 * 10. 댓글 업데이트
+	 * @param r
+	 * @return
+	 */
+	int updateReply(Reply r);
+
+	ArrayList<Reply> moreReplyList(int bId);
+
 	
 
 
